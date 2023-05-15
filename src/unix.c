@@ -22,6 +22,9 @@
 #ifdef HAS_POLL
 #undef HAS_POLL
 #endif
+#ifdef HAS_EPOLL
+#undef HAS_EPOLL
+#endif
 #ifndef HAS_FCNTL
 #define HAS_FCNTL 1
 #endif
@@ -51,6 +54,10 @@
 
 #ifdef HAS_POLL
 #include <poll.h>
+#endif
+
+#ifdef HAS_EPOLL
+#include <sys/epoll.h>
 #endif
 
 #if !defined(HAS_SOCKLEN_T) && !defined(__socklen_t_defined)
@@ -612,6 +619,61 @@ enet_socket_wait(ENetSocket socket, enet_uint32 *condition, enet_uint32 timeout)
     }
 
     return 0;
+#endif
+}
+
+int
+enet_socket_wait_epoll(ENetSocket socket, int epollFd, enet_uint32 *condition, enet_uint32 timeout)
+{
+#ifdef HAS_EPOLL
+    struct epoll_event epollSocket;
+    int pollCount;
+
+    epollSocket.data.fd = socket;
+    epollSocket.events = 0;
+
+    if (*condition & ENET_SOCKET_WAIT_SEND) {
+        epollSocket.events |= EPOLLOUT;
+    }
+
+    if (*condition & ENET_SOCKET_WAIT_RECEIVE) {
+        epollSocket.events |= EPOLLIN;
+    }
+
+    // Note: EPOLL_CTL_ADD is done during enet host creation
+    if (epoll_ctl(epollFd, EPOLL_CTL_MOD, socket, &epollSocket) == -1) {
+        return -1;
+    }
+
+    pollCount = epoll_wait(epollFd, &epollSocket, 1, timeout);
+
+    if (pollCount < 0) {
+        if (errno == EINTR && *condition & ENET_SOCKET_WAIT_INTERRUPT) {
+            *condition = ENET_SOCKET_WAIT_INTERRUPT;
+
+            return 0;
+        }
+
+        return -1;
+    }
+
+    *condition = ENET_SOCKET_WAIT_NONE;
+
+    if (pollCount == 0) {
+        return 0;
+    }
+
+    if (epollSocket.events & EPOLLOUT) {
+        *condition |= ENET_SOCKET_WAIT_SEND;
+    }
+
+    if (epollSocket.events & EPOLLIN) {
+        *condition |= ENET_SOCKET_WAIT_RECEIVE;
+    }
+
+    return 0;
+#else
+    return -2;
 #endif
 }
 
