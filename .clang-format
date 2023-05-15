@@ -1,0 +1,22 @@
+# See https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+BasedOnStyle: WebKit
+AllowShortLambdasOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortEnumsOnASingleLine: true
+InsertBraces: true
+AlignAfterOpenBracket: BlockIndent
+ColumnLimit: 120
+AlwaysBreakAfterReturnType: TopLevelDefinitions
+BinPackParameters: false
+BinPackArguments: false
+PointerAlignment: Right
+IndentCaseLabels: false
+AlignConsecutiveMacros:
+    Enabled: true
+    AcrossComments: true
+IndentPPDirectives: None
+AlignEscapedNewlines: Left
+AlignTrailingComments:
+    Kind: Always
+    OverEmptyLines: 0
+SortIncludes: Never
