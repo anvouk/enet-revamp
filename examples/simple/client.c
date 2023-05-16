@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #include <enet/enet.h>
 
@@ -121,7 +122,7 @@ main(void)
             switch (event.type) {
             case ENET_EVENT_TYPE_RECEIVE:
                 printf(
-                    "A packet of length %lu containing %s was received from %u:%u on channel %u.\n",
+                    "A packet of length %zu containing %s was received from %u:%u on channel %u.\n",
                     event.packet->dataLength,
                     event.packet->data,
                     event.peer->address.host,
