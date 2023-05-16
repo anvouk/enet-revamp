@@ -70,16 +70,18 @@ set(INCLUDE_FILES
     ${INCLUDE_FILES_PREFIX}/win32.h
 )
 
+set(SOURCE_FILES_PREFIX src)
 set(SOURCE_FILES
-    callbacks.c
-    compress.c
-    host.c
-    list.c
-    packet.c
-    peer.c
-    protocol.c
-    unix.c
-    win32.c)
+    ${SOURCE_FILES_PREFIX}/callbacks.c
+    ${SOURCE_FILES_PREFIX}/compress.c
+    ${SOURCE_FILES_PREFIX}/host.c
+    ${SOURCE_FILES_PREFIX}/list.c
+    ${SOURCE_FILES_PREFIX}/packet.c
+    ${SOURCE_FILES_PREFIX}/peer.c
+    ${SOURCE_FILES_PREFIX}/protocol.c
+    ${SOURCE_FILES_PREFIX}/unix.c
+    ${SOURCE_FILES_PREFIX}/win32.c
+)
 
 source_group(include FILES ${INCLUDE_FILES})
 source_group(source FILES ${SOURCE_FILES})
@@ -92,6 +94,8 @@ add_library(enet STATIC
 if (MINGW)
     target_link_libraries(enet winmm ws2_32)
 endif()
+
+add_subdirectory(examples)
 
 install(TARGETS enet
     RUNTIME DESTINATION bin
