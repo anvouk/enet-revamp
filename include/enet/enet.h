@@ -134,7 +134,8 @@ typedef void(ENET_CALLBACK *ENetPacketFreeCallback)(struct _ENetPacket *);
  *    (instead of reliable) sends if it exceeds the MTU
  *
  *    ENET_PACKET_FLAG_SENT - whether the packet has been sent from all queues it has been entered into
- *    @sa ENetPacketFlag
+ *
+ * @sa ENetPacketFlag
  */
 typedef struct _ENetPacket {
     size_t referenceCount;               /**< internal use only */
@@ -463,53 +464,57 @@ typedef struct _ENetEvent {
     @{
 */
 
-/**
-    Initializes ENet globally.  Must be called prior to using any functions in
-    ENet.
+/** Initializes ENet globally.
+
+    Must be called prior to using any functions in ENet.
 
     @returns 0 on success, < 0 on failure
 */
 ENET_API int enet_initialize(void);
 
-/**
-    Initializes ENet globally and supplies user-overridden callbacks. Must be called prior to using any functions in
-   ENet. Do not use enet_initialize() if you use this variant. Make sure the ENetCallbacks structure is zeroed out so
-   that any additional callbacks added in future versions will be properly ignored.
+/** Initializes ENet globally and supplies user-overridden callbacks.
+
+    Must be called prior to using any functions in
+    ENet. Do not use enet_initialize() if you use this variant. Make sure the ENetCallbacks structure is zeroed out so
+    that any additional callbacks added in future versions will be properly ignored.
 
     @param version the constant ENET_VERSION should be supplied so ENet knows which version of ENetCallbacks struct to
-   use
+    use
     @param inits user-overridden callbacks where any NULL callbacks will use ENet's defaults
 
     @returns 0 on success, < 0 on failure
 */
 ENET_API int enet_initialize_with_callbacks(ENetVersion version, const ENetCallbacks *inits);
 
-/**
-    Shuts down ENet globally.  Should be called when a program that has
-    initialized ENet exits.
+/** Shuts down ENet globally.
+
+    Should be called when a program that has initialized ENet exits.
 */
 ENET_API void enet_deinitialize(void);
 
-/**
-    Gives the linked version of the ENet library.
+/** Gives the linked version of the ENet library.
+
     @returns the version number
 */
 ENET_API ENetVersion enet_linked_version(void);
 
 /** @} */
 
-/** @defgroup private ENet private implementation functions */
-
-/**
-    Returns the wall-time in milliseconds.  Its initial value is unspecified
-    unless otherwise set.
+/** @defgroup private ENet private implementation functions
+    @{
 */
 
+/** Returns the wall-time in milliseconds.
+
+    Its initial value is unspecified unless otherwise set.
+*/
 ENET_API enet_uint32 enet_time_get(void);
-/**
-    Sets the current wall-time in milliseconds.
+
+/** Sets the current wall-time in milliseconds.
 */
 ENET_API void enet_time_set(enet_uint32 newTimeBase);
+
+/** @} */
 
 /** @defgroup socket ENet socket functions
     @{
@@ -575,6 +580,7 @@ ENET_API int enet_address_set_host(ENetAddress *address, const char *hostName);
 ENET_API int enet_address_get_host_ip(const ENetAddress *address, char *hostName, size_t nameLength);
 
 /** Attempts to do a reverse lookup of the host field in the address parameter.
+
     @param address    address used for reverse lookup
     @param hostName   destination for name, must not be NULL
     @param nameLength maximum length of hostName.
@@ -592,6 +598,7 @@ ENET_API int enet_address_get_host(const ENetAddress *address, char *hostName, s
 */
 
 /** Creates a packet that may be sent to a peer.
+
     @param data         initial contents of the packet's data; the packet's data will remain uninitialized if data is
     NULL.
     @param dataLength   size of the data allocated for this packet
@@ -607,7 +614,8 @@ ENET_API ENetPacket *enet_packet_create(const void *data, size_t dataLength, ene
 ENET_API void enet_packet_destroy(ENetPacket *packet);
 
 /** Attempts to resize the data in the packet to length specified in the
-    dataLength parameter
+    dataLength parameter.
+
     @param packet packet to resize
     @param dataLength new size for the packet data
 
@@ -677,8 +685,6 @@ ENET_API ENetPeer *enet_host_connect(ENetHost *host, const ENetAddress *address,
     @retval > 0 if an event was dispatched
     @retval 0 if no events are available
     @retval < 0 on failure
-
-    @ingroup host
 */
 ENET_API int enet_host_check_events(ENetHost *host, ENetEvent *event);
 
@@ -695,8 +701,6 @@ ENET_API int enet_host_check_events(ENetHost *host, ENetEvent *event);
     @retval < 0 on failure
 
     @remarks enet_host_service should be called fairly regularly for adequate performance
-
-    @ingroup host
 */
 ENET_API int enet_host_service(ENetHost *host, ENetEvent *event, enet_uint32 timeout);
 
@@ -706,8 +710,6 @@ ENET_API int enet_host_service(ENetHost *host, ENetEvent *event, enet_uint32 tim
 
     @remarks this function need only be used in circumstances where one wishes to send queued packets earlier than in a
         call to enet_host_service().
-
-    @ingroup host
 */
 ENET_API void enet_host_flush(ENetHost *host);
 
@@ -753,11 +755,16 @@ ENET_API void enet_host_channel_limit(ENetHost *host, size_t channelLimit);
 */
 ENET_API void enet_host_bandwidth_limit(ENetHost *host, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth);
 
-/** @} */
 
 ENET_API void enet_host_bandwidth_throttle(ENetHost *host);
 ENET_API enet_uint32 enet_host_random_seed(void);
 ENET_API enet_uint32 enet_host_random(ENetHost *host);
+
+/** @} */
+
+/** @defgroup peer ENet peer functions
+    @{
+*/
 
 /** Queues a packet to be sent.
 
@@ -865,10 +872,6 @@ ENET_API void enet_peer_disconnect_now(ENetPeer *peer, enet_uint32 data);
 */
 ENET_API void enet_peer_disconnect_later(ENetPeer *peer, enet_uint32 data);
 
-/** @defgroup peer ENet peer functions
-    @{
-*/
-
 /** Configures throttle parameter for a peer.
 
     Unreliable packets are dropped by ENet in response to the varying conditions
@@ -902,8 +905,6 @@ ENET_API void enet_peer_disconnect_later(ENetPeer *peer, enet_uint32 data);
 ENET_API void
 enet_peer_throttle_configure(ENetPeer *peer, enet_uint32 interval, enet_uint32 acceleration, enet_uint32 deceleration);
 
-/** @} */
-
 ENET_API int enet_peer_throttle(ENetPeer *peer, enet_uint32 rtt);
 ENET_API void enet_peer_reset_queues(ENetPeer *peer);
 ENET_API int enet_peer_has_outgoing_commands(ENetPeer *peer);
@@ -929,6 +930,12 @@ enet_peer_dispatch_incoming_reliable_commands(ENetPeer *peer, ENetChannel *chann
 ENET_API void enet_peer_on_connect(ENetPeer *peer);
 ENET_API void enet_peer_on_disconnect(ENetPeer *peer);
 
+/** @} */
+
+/** @defgroup range ENet range functions
+    @{
+*/
+
 ENET_API void *enet_range_coder_create(void);
 ENET_API void enet_range_coder_destroy(void *context);
 ENET_API size_t enet_range_coder_compress(
@@ -943,7 +950,15 @@ ENET_API size_t enet_range_coder_decompress(
     void *context, const enet_uint8 *inData, size_t inLimit, enet_uint8 *outData, size_t outLimit
 );
 
+/** @} */
+
+/** @defgroup protocol ENet protocol functions
+    @{
+*/
+
 ENET_API size_t enet_protocol_command_size(enet_uint8 commandNumber);
+
+/** @} */
 
 #ifdef __cplusplus
 }
