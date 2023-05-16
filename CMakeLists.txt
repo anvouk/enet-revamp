@@ -95,6 +95,8 @@ if (MINGW)
     target_link_libraries(enet winmm ws2_32)
 endif()
 
+add_subdirectory(examples)
+
 install(TARGETS enet
     RUNTIME DESTINATION bin
     ARCHIVE DESTINATION lib/static
