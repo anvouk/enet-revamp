@@ -1,6 +1,7 @@
 .idea
 .vscode
 .vs
+doxygen
 
 *.d
 *.o
