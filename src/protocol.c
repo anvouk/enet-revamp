@@ -1822,13 +1822,6 @@ enet_protocol_send_outgoing_commands(ENetHost *host, ENetEvent *event, int check
     return 0;
 }
 
-/** Sends any queued packets on the host specified to its designated peers.
-
-    @param host   host to flush
-    @remarks this function need only be used in circumstances where one wishes to send queued packets earlier than in a
-   call to enet_host_service().
-    @ingroup host
-*/
 void
 enet_host_flush(ENetHost *host)
 {
@@ -1837,15 +1830,6 @@ enet_host_flush(ENetHost *host)
     enet_protocol_send_outgoing_commands(host, NULL, 0);
 }
 
-/** Checks for any queued events on the host and dispatches one if available.
-
-    @param host    host to check for events
-    @param event   an event structure where event details will be placed if available
-    @retval > 0 if an event was dispatched
-    @retval 0 if no events are available
-    @retval < 0 on failure
-    @ingroup host
-*/
 int
 enet_host_check_events(ENetHost *host, ENetEvent *event)
 {
@@ -1860,19 +1844,6 @@ enet_host_check_events(ENetHost *host, ENetEvent *event)
     return enet_protocol_dispatch_incoming_commands(host, event);
 }
 
-/** Waits for events on the host specified and shuttles packets between
-    the host and its peers.
-
-    @param host    host to service
-    @param event   an event structure where event details will be placed if one occurs
-                   if event == NULL then no events will be delivered
-    @param timeout number of milliseconds that ENet should wait for events
-    @retval > 0 if an event occurred within the specified time limit
-    @retval 0 if no event occurred
-    @retval < 0 on failure
-    @remarks enet_host_service should be called fairly regularly for adequate performance
-    @ingroup host
-*/
 int
 enet_host_service(ENetHost *host, ENetEvent *event, enet_uint32 timeout)
 {

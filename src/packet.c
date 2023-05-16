@@ -6,17 +6,6 @@
 #define ENET_BUILDING_LIB 1
 #include "enet/enet.h"
 
-/** @defgroup Packet ENet packet functions
-    @{
-*/
-
-/** Creates a packet that may be sent to a peer.
-    @param data         initial contents of the packet's data; the packet's data will remain uninitialized if data is
-   NULL.
-    @param dataLength   size of the data allocated for this packet
-    @param flags        flags for this packet as described for the ENetPacket structure.
-    @returns the packet on success, NULL on failure
-*/
 ENetPacket *
 enet_packet_create(const void *data, size_t dataLength, enet_uint32 flags)
 {
@@ -50,9 +39,6 @@ enet_packet_create(const void *data, size_t dataLength, enet_uint32 flags)
     return packet;
 }
 
-/** Destroys the packet and deallocates its data.
-    @param packet packet to be destroyed
-*/
 void
 enet_packet_destroy(ENetPacket *packet)
 {
@@ -69,12 +55,6 @@ enet_packet_destroy(ENetPacket *packet)
     enet_free(packet);
 }
 
-/** Attempts to resize the data in the packet to length specified in the
-    dataLength parameter
-    @param packet packet to resize
-    @param dataLength new size for the packet data
-    @returns 0 on success, < 0 on failure
-*/
 int
 enet_packet_resize(ENetPacket *packet, size_t dataLength)
 {
@@ -149,5 +129,3 @@ enet_crc32(const ENetBuffer *buffers, size_t bufferCount)
 
     return ENET_HOST_TO_NET_32(~crc);
 }
-
-/** @} */
