@@ -10,3 +10,4 @@ if(WIN32)
 endif()
 
 add_subdirectory(simple)
+add_subdirectory(ping-pong)
