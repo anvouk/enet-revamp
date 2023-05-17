@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.8.12...3.20)
 
 project(enet)
 
+option(BUILD_EXAMPLES "Build examples along enet" ON)
+
 # The "configure" step.
 include(CheckFunctionExists)
 include(CheckStructHasMember)
@@ -95,7 +97,9 @@ if (MINGW)
     target_link_libraries(enet winmm ws2_32)
 endif()
 
-add_subdirectory(examples)
+if(BUILD_EXAMPLES)
+    add_subdirectory(examples)
+endif()
 
 install(TARGETS enet
     RUNTIME DESTINATION bin

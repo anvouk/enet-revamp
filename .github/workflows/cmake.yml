@@ -14,8 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Configure CMake for Windows
+      run: cmake -B ${{github.workspace}}/build -DBUILD_EXAMPLES=OFF
+      if: runner.os == 'Windows'
+
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+      if: runner.os != 'Windows'
 
     - name: Build
-      run: cmake --build ${{github.workspace}}/build --config ${{ matrix.build_type }}      
+      run: cmake --build ${{github.workspace}}/build --config ${{ matrix.build_type }}
