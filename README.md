@@ -1,4 +1,5 @@
 # ENET - revamped
+[![CMake](https://github.com/anvouk/enet-revamp/actions/workflows/cmake.yml/badge.svg)](https://github.com/anvouk/enet-revamp/actions/workflows/cmake.yml)
 
 A cleaned-up version of enet + some features and better documentation.
 
