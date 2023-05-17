@@ -13,6 +13,7 @@
 #pragma warning(disable : 4146) // unary minus operator applied to unsigned type
 #define _CRT_SECURE_NO_DEPRECATE
 #define _CRT_SECURE_NO_WARNINGS
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 #endif
 #endif
 
