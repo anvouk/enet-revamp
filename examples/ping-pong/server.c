@@ -1,10 +1,14 @@
-#include <stdio.h>
+#include <assert.h>
 #include <stdbool.h>
-#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 
 #include <enet/enet.h>
 
 #include "shared.h"
+
+#define BUFFER_SZ 64
+static char buffer[BUFFER_SZ] = { 0 };
 
 int
 main(void)
@@ -25,7 +29,7 @@ main(void)
         printf("ENET server listening on port: %u\n", port);
     } else {
         fprintf(stderr, "An error occurred while trying to create an ENet server host.\n");
-        goto cleanup;
+        goto done;
     }
 
     bool has_finished = false;
@@ -39,14 +43,28 @@ main(void)
                 printf("New client connected\n");
                 break;
             case ENET_EVENT_TYPE_RECEIVE:
-                printf(
-                    "A packet of length %zu containing %s was received from %u:%u on channel %u.\n",
-                    event.packet->dataLength,
-                    event.packet->data,
-                    event.peer->address.host,
-                    event.peer->address.port,
-                    event.channelID
-                );
+                // parse incoming data
+                if (safe_parse_packet_data(buffer, BUFFER_SZ, event.packet->data, event.packet->dataLength) != 0) {
+                    fprintf(stderr, "ERROR: Failed parsing incoming packet data, dropping\n");
+                    enet_packet_destroy(event.packet);
+                    continue;
+                }
+
+                // act on received data: send PONG on PING
+                if (strcmp(buffer, PING) == 0) {
+                    printf("PING received\n");
+                    ENetPacket *packet = enet_packet_create(PONG, strlen(PONG) + 1, ENET_PACKET_FLAG_RELIABLE);
+                    if (!packet) {
+                        fprintf(stderr, "ERROR: Failed creating PONG packet\n");
+                        enet_packet_destroy(event.packet);
+                        goto done;
+                    }
+                    enet_peer_send(event.peer, 0, packet);
+                } else {
+                    fprintf(stderr, "WARNING: unknown packet date received: '%s'\n", buffer);
+                }
+
+                // remember to destroy the packet
                 enet_packet_destroy(event.packet);
                 break;
             case ENET_EVENT_TYPE_DISCONNECT:
@@ -60,7 +78,7 @@ main(void)
         }
     }
 
-cleanup:
+done:
     printf("Closing ENET server\n");
     if (server) {
         enet_host_destroy(server);

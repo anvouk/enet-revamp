@@ -1955,9 +1955,18 @@ enet_host_service(ENetHost *host, ENetEvent *event, enet_uint32 timeout)
 
             waitCondition = ENET_SOCKET_WAIT_RECEIVE | ENET_SOCKET_WAIT_INTERRUPT;
 
+#ifdef HAS_EPOLL
+            if (enet_socket_wait_epoll(
+                    host->socket, host->epollFd, &waitCondition, ENET_TIME_DIFFERENCE(timeout, host->serviceTime)
+                )
+                != 0) {
+                return -1;
+            }
+#else
             if (enet_socket_wait(host->socket, &waitCondition, ENET_TIME_DIFFERENCE(timeout, host->serviceTime)) != 0) {
                 return -1;
             }
+#endif
         } while (waitCondition & ENET_SOCKET_WAIT_INTERRUPT);
 
         host->serviceTime = enet_time_get();

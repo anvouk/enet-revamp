@@ -416,6 +416,8 @@ typedef struct _ENetHost {
     size_t maximumPacketSize;
     /** the maximum aggregate amount of buffer space a peer may use waiting for packets to be delivered */
     size_t maximumWaitingData;
+    /** epoll fd used for polling. Only available if lib has been built with epoll support */
+    int epollFd;
 } ENetHost;
 
 /**
@@ -530,6 +532,7 @@ ENET_API int
 enet_socket_send(ENetSocket socket, const ENetAddress *address, const ENetBuffer *buffers, size_t bufferCount);
 ENET_API int enet_socket_receive(ENetSocket socket, ENetAddress *address, ENetBuffer *buffers, size_t bufferCount);
 ENET_API int enet_socket_wait(ENetSocket socket, enet_uint32 *condition, enet_uint32 timeout);
+ENET_API int enet_socket_wait_epoll(ENetSocket socket, int epollFd, enet_uint32 *condition, enet_uint32 timeout);
 ENET_API int enet_socket_set_option(ENetSocket socket, ENetSocketOption option, int value);
 ENET_API int enet_socket_get_option(ENetSocket socket, ENetSocketOption option, int *value);
 ENET_API int enet_socket_shutdown(ENetSocket socket, ENetSocketShutdown how);
