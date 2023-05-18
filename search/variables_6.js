@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['outgoingbandwidth_243',['outgoingBandwidth',['../d7/d21/structENetPeer.html#a38ca43b3ec9cd51b8120b7c50b03c5f0',1,'ENetPeer::outgoingBandwidth()'],['../d3/d84/structENetHost.html#ac72acde682f903beb2d9713538b6465c',1,'ENetHost::outgoingBandwidth()']]]
+  ['maximumpacketsize_243',['maximumPacketSize',['../d3/d84/structENetHost.html#aa22929bbc19e19ae4b01c7e9b3c0e540',1,'ENetHost']]],
+  ['maximumwaitingdata_244',['maximumWaitingData',['../d3/d84/structENetHost.html#a2b7d6895ab4ee6280ef951c1aacfea96',1,'ENetHost']]]
 ];

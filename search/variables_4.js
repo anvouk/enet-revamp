@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['incomingbandwidth_239',['incomingBandwidth',['../d7/d21/structENetPeer.html#ac9266da9a8883b79355aabac6cbf4c82',1,'ENetPeer::incomingBandwidth()'],['../d3/d84/structENetHost.html#a663f01950084c01c49c060975bfe0d81',1,'ENetHost::incomingBandwidth()']]],
-  ['intercept_240',['intercept',['../d3/d84/structENetHost.html#a425ea8ffaaf90e33888611c496be036a',1,'ENetHost']]]
+  ['flags_239',['flags',['../de/dd0/structENetPacket.html#afe56ea0c19dcbcdb3e48361a8b9ef190',1,'ENetPacket']]],
+  ['freecallback_240',['freeCallback',['../de/dd0/structENetPacket.html#ad602d6b6b35ef88b2b2e080fa5c9dc3d',1,'ENetPacket']]]
 ];

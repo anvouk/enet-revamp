@@ -23,6 +23,7 @@ var unix_8c =
     [ "enet_socket_set_option", "d9/ded/group__socket.html#gadb21781cdcff4a59f04b5be185d932c3", null ],
     [ "enet_socket_shutdown", "d9/ded/group__socket.html#gaff5538472bf34e888f3fec3302cda1df", null ],
     [ "enet_socket_wait", "d9/ded/group__socket.html#ga4c382ab1c5b1a4fafddfd2a8b17f416c", null ],
+    [ "enet_socket_wait_epoll", "d9/ded/group__socket.html#ga6a4c909b355602338bfdc5f826c3cde1", null ],
     [ "enet_socketset_select", "d9/ded/group__socket.html#ga19011c23e0e92cda38ff631370db132e", null ],
     [ "enet_time_get", "d6/da9/group__private.html#ga3d60275f78985d9aaba12c2fad13c37f", null ],
     [ "enet_time_set", "d6/da9/group__private.html#gadfee26323751027961e944fba653498f", null ]

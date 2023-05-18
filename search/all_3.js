@@ -12,7 +12,7 @@ var searchData=
   ['enet_20range_20functions_21',['ENet range functions',['../d5/d58/group__range.html',1,'']]],
   ['enet_20socket_20functions_22',['ENet socket functions',['../d9/ded/group__socket.html',1,'']]],
   ['enet_2eh_23',['enet.h',['../de/d3f/enet_8h.html',1,'']]],
-  ['enet_5faddress_5fget_5fhost_24',['enet_address_get_host',['../d5/dfb/group__Address.html#ga55282b3074cb409544f6aa72a67582ab',1,'enet_address_get_host(const ENetAddress *address, char *hostName, size_t nameLength):&#160;unix.c'],['../d5/dfb/group__Address.html#ga55282b3074cb409544f6aa72a67582ab',1,'enet_address_get_host(const ENetAddress *address, char *name, size_t nameLength):&#160;unix.c']]],
+  ['enet_5faddress_5fget_5fhost_24',['enet_address_get_host',['../d5/dfb/group__Address.html#ga55282b3074cb409544f6aa72a67582ab',1,'enet_address_get_host(const ENetAddress *address, char *name, size_t nameLength):&#160;unix.c'],['../d5/dfb/group__Address.html#ga55282b3074cb409544f6aa72a67582ab',1,'enet_address_get_host(const ENetAddress *address, char *hostName, size_t nameLength):&#160;unix.c']]],
   ['enet_5faddress_5fget_5fhost_5fip_25',['enet_address_get_host_ip',['../d5/dfb/group__Address.html#ga770507a74d2e98334eebdadd9c681f69',1,'enet_address_get_host_ip(const ENetAddress *address, char *name, size_t nameLength):&#160;unix.c'],['../d5/dfb/group__Address.html#ga770507a74d2e98334eebdadd9c681f69',1,'enet_address_get_host_ip(const ENetAddress *address, char *hostName, size_t nameLength):&#160;unix.c']]],
   ['enet_5faddress_5fset_5fhost_26',['enet_address_set_host',['../d5/dfb/group__Address.html#ga32a6ae1ed3d7704858f237688e7384ee',1,'enet_address_set_host(ENetAddress *address, const char *name):&#160;unix.c'],['../d5/dfb/group__Address.html#ga32a6ae1ed3d7704858f237688e7384ee',1,'enet_address_set_host(ENetAddress *address, const char *hostName):&#160;unix.c']]],
   ['enet_5faddress_5fset_5fhost_5fip_27',['enet_address_set_host_ip',['../d5/dfb/group__Address.html#ga98e6c162cdb7d41c2f4f2d440f4219a3',1,'enet_address_set_host_ip(ENetAddress *address, const char *name):&#160;unix.c'],['../d5/dfb/group__Address.html#ga98e6c162cdb7d41c2f4f2d440f4219a3',1,'enet_address_set_host_ip(ENetAddress *address, const char *hostName):&#160;unix.c']]],
@@ -95,5 +95,6 @@ var searchData=
   ['enetprotocolthrottleconfigure_104',['ENetProtocolThrottleConfigure',['../d3/d2b/structENetProtocolThrottleConfigure.html',1,'']]],
   ['enetprotocolverifyconnect_105',['ENetProtocolVerifyConnect',['../db/d77/structENetProtocolVerifyConnect.html',1,'']]],
   ['enetrangecoder_106',['ENetRangeCoder',['../d7/da2/structENetRangeCoder.html',1,'']]],
-  ['enetsymbol_107',['ENetSymbol',['../de/d18/structENetSymbol.html',1,'']]]
+  ['enetsymbol_107',['ENetSymbol',['../de/d18/structENetSymbol.html',1,'']]],
+  ['epollfd_108',['epollFd',['../d3/d84/structENetHost.html#a2d521e4c125f6871f4bef8b67595459f',1,'ENetHost']]]
 ];

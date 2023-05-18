@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"dc/db1/win32_8h.html#ab8c03b0a5df283d329adf245e1f96622":[2,0,17,13],
+"dc/db1/win32_8h.html#ad5003a9b55c900605b6a81ea37d382ee":[2,0,17,8],
+"dc/db1/win32_8h.html#ada38c37a943326446cb4ba8be0b27469":[2,0,17,10],
 "dc/db1/win32_8h_source.html":[2,0,17],
 "dc/de3/protocol_8c.html":[2,0,9],
 "dc/de3/protocol_8c.html#a0dc3ac14ddf12c81cb53d3e662ad277f":[2,0,9,0],
@@ -10,10 +13,10 @@ var NAVTREEINDEX2 =
 "dd/d12/group__list.html#ga79bd28f859be551e2019f8b8bec8bcd4":[2,0,5,2],
 "dd/d12/group__list.html#ga7ee82bbce4bbb8d5cf8a59a744e26f0d":[2,0,6,13],
 "dd/d12/group__list.html#ga7ee82bbce4bbb8d5cf8a59a744e26f0d":[2,0,5,4],
-"dd/d12/group__list.html#ga9279ceeda719e5079aef1b35ff36ac6e":[2,0,6,14],
 "dd/d12/group__list.html#ga9279ceeda719e5079aef1b35ff36ac6e":[2,0,5,5],
-"dd/d12/group__list.html#ga94d06840adb246fbaba78abaaf172892":[2,0,6,10],
+"dd/d12/group__list.html#ga9279ceeda719e5079aef1b35ff36ac6e":[2,0,6,14],
 "dd/d12/group__list.html#ga94d06840adb246fbaba78abaaf172892":[2,0,5,1],
+"dd/d12/group__list.html#ga94d06840adb246fbaba78abaaf172892":[2,0,6,10],
 "dd/d49/callbacks_8h.html":[2,0,1],
 "dd/d49/callbacks_8h_source.html":[2,0,1],
 "dd/d8a/unionENetProtocol.html":[1,0,14],

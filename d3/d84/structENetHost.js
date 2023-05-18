@@ -13,6 +13,7 @@ var structENetHost =
     [ "connectedPeers", "d3/d84/structENetHost.html#a83ecae43b7fb248f5403e6448f687572", null ],
     [ "dispatchQueue", "d3/d84/structENetHost.html#a8523b42840bfb5d4564ad04c747ec887", null ],
     [ "duplicatePeers", "d3/d84/structENetHost.html#a6f26c90c0f1c9d9e3b7d851432b71ac2", null ],
+    [ "epollFd", "d3/d84/structENetHost.html#a2d521e4c125f6871f4bef8b67595459f", null ],
     [ "headerFlags", "d3/d84/structENetHost.html#a15cf66009846d9b052b3f4b4b9563f45", null ],
     [ "incomingBandwidth", "d3/d84/structENetHost.html#a663f01950084c01c49c060975bfe0d81", null ],
     [ "intercept", "d3/d84/structENetHost.html#a425ea8ffaaf90e33888611c496be036a", null ],
