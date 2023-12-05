@@ -77,6 +77,16 @@ client_close_connection(ENetHost *client, ENetPeer *peer, unsigned timeout)
     return false;
 }
 
+static int packet_counter = 0;
+
+static void
+packet_sent_success_cb(ENetPacket *packet)
+{
+    // called by enet after packet send has been ack'd and the packet is freed.
+    (void)packet;
+    ++packet_counter;
+}
+
 int
 main(void)
 {
@@ -141,7 +151,9 @@ main(void)
                         enet_peer_reset(peer);
                         goto done;
                     }
+                    packet->freeCallback = packet_sent_success_cb;
                     enet_peer_send(peer, 0, packet);
+                    printf("number of packets sent to server: %d\n", packet_counter);
                 } else {
                     fprintf(stderr, "WARNING: unknown packet date received: '%s'\n", buffer);
                 }
